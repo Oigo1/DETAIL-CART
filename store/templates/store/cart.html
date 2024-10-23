@@ -1,0 +1,32 @@
+{% load static %}
+{% load cart_filters %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CART</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'store/styles.css' %}">
+</head>
+<body>
+<div class="cart-items">
+    {% for product in products %}
+    <div class="cart-item">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        <div class="item-details">
+            <h2>{{ product.name }}</h2>
+            <p>KES {{ product.price }}</p>
+            <div class="quantity-control">
+                <a href="{% url 'remove_from_cart' product.sku %}">-</a>
+                <span>{{ cart|get_item:product.sku }}</span>
+                <a href="{% url 'add_to_cart' product.sku %}">+</a>
+            </div>
+            <a href="{% url 'delete_from_cart' product.sku %}" class="delete-btn">Delete</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>  
+</body>
+</html>

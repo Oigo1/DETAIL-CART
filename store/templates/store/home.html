@@ -1,0 +1,17 @@
+{% load static %}
+{% load cart_filters %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Online Shop</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'store/styles.css' %}">
+</head>
+<body>
+    <h1>Welcome to Our Online Shop</h1>
+    <p>Explore our collection of amazing products!</p>
+    <a href="{% url 'cart' %}">Go to Cart</a>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% load static %}
+{% load cart_filters %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'store/styles.css' %}">
+</head>
+<body>
+    <div class="product-detail">
+        <div class="product-images">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="main-image">
+            <div class="thumbnail-images">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="thumbnail">
+            </div>
+        </div>
+        <div class="product-info">
+            <h1>{{ product.name }}</h1>
+            <span class="price">KES{{ product.price }}</span>
+            <p>SKU#: {{ product.sku }}</p>
+            <ul>
+                <li>Feature 1</li>
+                <li>Feature 2</li>
+            </ul>
+            <div class="quantity">
+                <a href="{% url 'remove_from_cart' product.sku %}">-</a>
+                <span>1</span>
+                <a href="{% url 'add_to_cart' product.sku %}">+</a>
+            </div>
+            <a href="{% url 'add_to_cart' product.sku %}" class="buy-now-btn">Buy Now</a>
+        </div>
+    </div>
+</body>
+</html>
