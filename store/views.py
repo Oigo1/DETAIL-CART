@@ -4,10 +4,12 @@ from .models import *
 # Create your views here.
 
 def home(request):
-    return render(request, 'store/home.html')
+    products = Product.objects.all() #Fetch all products from the database
+    return render(request, 'store/home.html', {'products': products})
 
 def product_detail(request, sku):
-    product = get_object_or_404(Product, sku)
+    product = get_object_or_404(Product, sku=sku)
+    images = product.images.all() # Fetch related images
     return render(request, 'store/product_detail.html', {'product': product})
 
 def cart_view(request):

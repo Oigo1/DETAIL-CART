@@ -13,7 +13,7 @@
 <body>
 <div class="cart-items">
     {% for product in products %}
-    <div class="cart-item">
+    <div class="cart-item" >
         <img src="{{ product.image.url }}" alt="{{ product.name }}">
         <div class="item-details">
             <h2>{{ product.name }}</h2>
@@ -27,6 +27,7 @@
         </div>
     </div>
     {% endfor %}
-</div>  
+</div> 
+<a href="{% url 'home' %}">Continue Shopping</a> 
 </body>
 </html>
