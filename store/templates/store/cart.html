@@ -11,6 +11,50 @@
     <link rel="stylesheet" type="text/css" href="{% static 'store/styles.css' %}">
 </head>
 <body>
+
+<!-- Navbar -->
+     <header id="navbar">
+        <nav>
+            <!-- Logo -->
+             <a href="{% url 'home' %}" class="logo">My Logo</a>
+
+             <!-- Menu -->
+              <ul class="menu">
+                <li class="dropdown">
+                    <a href="#">About</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Status</a></li>
+                        <li><a href="#">Journey</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Market</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Status</a></li>
+                        <li><a href="#">Journey</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Brands</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Status</a></li>
+                        <li><a href="#">Journey</a></li>
+                    </ul>
+                </li>
+                
+              </ul>
+
+              <ul class="menu-1">
+              <li><a href="#">Login</a></li>
+              <li><a href="{% url 'home' %}">Home</a></li>
+              </ul>
+        </nav>
+     </header>
+<br>
+<br>
+<br>
+<br>
+
 <div class="cart-items">
     {% for product in products %}
     <div class="cart-item" >
