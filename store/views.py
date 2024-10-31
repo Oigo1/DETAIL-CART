@@ -1,5 +1,7 @@
+from django.contrib.auth import login, authenticate
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
+from .forms import SignUpForm
 
 # Create your views here.
 
@@ -40,3 +42,22 @@ def delete_from_cart(request, sku):
         del cart[sku]
     request.session['cart'] = cart
     return redirect('cart')
+
+def signup_view(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('home')
+        else:
+            return render(request, 'store/signup.html', {'form': form})  # return form with errors
+    else:
+        form = SignUpForm()
+        return render(request, 'store/signup.html', {'form': form})  # Ensure GET request returns an HttpResponse
+
+def login_view(request):
+    return render(request, 'store/login.html')
